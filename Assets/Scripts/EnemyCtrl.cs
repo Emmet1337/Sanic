@@ -7,12 +7,14 @@ public class EnemyCtrl : MonoBehaviour
     float direction = 1;
     float minX, maxX;
     private Rigidbody2D rigidbody2D;
+    public int offsetX = 10;
+    public float speed = 5f;
 
     void Start()
     {
       rigidbody2D=GetComponent<Rigidbody2D>();
         minX = transform.position.x;
-        maxX = minX + 10;
+        maxX = minX + offsetX;
     }
 
     // Update is called once per frame
@@ -27,7 +29,7 @@ public class EnemyCtrl : MonoBehaviour
           direction = 1;
         }
 
-        rigidbody2D.MovePosition(new Vector2 (direction * 5f * Time.deltaTime, 0)+rigidbody2D.position);
+        rigidbody2D.MovePosition(new Vector2 (direction * speed * Time.deltaTime, 0)+rigidbody2D.position);
 
     }
 }

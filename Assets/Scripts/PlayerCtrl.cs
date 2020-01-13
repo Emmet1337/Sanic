@@ -11,6 +11,7 @@ public class PlayerCtrl : MonoBehaviour {
     public float speed = 20f;
     public float jumpPower;
     private Rigidbody2D rb;
+    public GroundCheck groundCheck;
 
     void Start () {
         rb = GetComponent<Rigidbody2D> ();
@@ -20,21 +21,21 @@ public class PlayerCtrl : MonoBehaviour {
         float moveX = CnInputManager.GetAxis ("Horizontal");
         transform.Translate(Vector2.right*moveX*speed*Time.deltaTime);
 
-        if(CnInputManager.GetButtonDown("Jump")){
+        if(groundCheck.isGrounded && CnInputManager.GetButtonDown("Jump")){
             Jump();
         }
     }
 
     private void Jump () {
-        Debug.Log("Jump");
         rb.velocity = Vector3.up * jumpPower;
     }
 
-    void OnTriggerEnter2D (Collider2D other) {
-        if (other.tag == "bad") {
+    
+    void OnCollisionEnter2D (Collision2D collision) {
+        if (collision.gameObject.tag == "bad") {
             SceneManager.LoadScene (1);
         }
-        if (other.tag == "win") {
+        if (collision.gameObject.tag == "win") {
             SceneManager.LoadScene (2);
         }
     }

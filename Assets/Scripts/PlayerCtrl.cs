@@ -40,9 +40,6 @@ public class PlayerCtrl : MonoBehaviour {
         if (collision.gameObject.tag == enemyTag) {
             SceneManager.LoadScene (startlevel);
         }
-        if (collision.gameObject.tag == flagTag) {
-            SceneManager.LoadScene (winScreen);
-        }
         if(collision.gameObject.tag == lavaTag) {
             SceneManager.LoadScene(startlevel);
         }

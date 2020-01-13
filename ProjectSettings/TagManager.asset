@@ -45,3 +45,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 1836667099
+    locked: 0
+  - name: Units
+    uniqueID: 3165328661
+    locked: 0
+  - name: Items
+    uniqueID: 658509789
+    locked: 0
+  - name: Platforms
+    uniqueID: 3055729081
+    locked: 0

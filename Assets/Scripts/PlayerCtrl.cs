@@ -12,6 +12,11 @@ public class PlayerCtrl : MonoBehaviour {
     public float jumpPower;
     private Rigidbody2D rb;
     public GroundCheck groundCheck;
+    public String lavaTag="lava";
+    public String enemyTag="bad";
+    public String flagTag="win";
+    public int startlevel = 1;
+    public int winScreen = 2;
 
     void Start () {
         rb = GetComponent<Rigidbody2D> ();
@@ -32,11 +37,14 @@ public class PlayerCtrl : MonoBehaviour {
 
     
     void OnCollisionEnter2D (Collision2D collision) {
-        if (collision.gameObject.tag == "bad") {
-            SceneManager.LoadScene (1);
+        if (collision.gameObject.tag == enemyTag) {
+            SceneManager.LoadScene (startlevel);
         }
-        if (collision.gameObject.tag == "win") {
-            SceneManager.LoadScene (2);
+        if (collision.gameObject.tag == flagTag) {
+            SceneManager.LoadScene (winScreen);
+        }
+        if(collision.gameObject.tag == lavaTag) {
+            SceneManager.LoadScene(startlevel);
         }
     }
 
